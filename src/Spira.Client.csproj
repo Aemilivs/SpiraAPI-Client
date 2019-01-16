@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+    <PackageId>SpiraAPI.Client</PackageId>
+    <Authors>Vadim Emelin</Authors>
+    <Company />
+    <Product>SpiraAPI.Client</Product>
+    <Description>Spira API Client is a dotNet Standard based client which covers REST API of Inflectra Spira Test Management Tool.</Description>
+    <PackageProjectUrl>https://github.com/OKisekiO/Spira-API-Client</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/OKisekiO/Spira-API-Client</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageReleaseNotes>Initial build.</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+</Project>
