@@ -11,24 +11,19 @@ namespace Example
     {
         private class ApplicationRequest : ISpiraCredentials
         {
-            public string Username => "kiseki";
-            public string RsaToken => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+            public string Username => "vemelin";
+            public string RsaToken => "E2A69618-0FC3-438A-9B03-73674E4231BE";
         }
 
         public static void Main()
         {
-            var endpoint = "http://spira201.xx.xxxxx.com/SpiraTest/Services/v5_0/RestService.svc/projects/xx/";
+            var endpoint = "http://spira201.be.monster.com/SpiraTest/Services/v5_0/RestService.svc/projects/92/";
             var factory = new SpiraClientFactory(endpoint);
 
             var client = factory.Create(new ApplicationRequest());
 
-            var runs = client.TestRuns.CreateTestRuns(50274);
+            var runs = client.TestSets.GetTestCases(63514);
 
-            var run = runs.SingleOrDefault(element => element.TestCaseId == 194735);
-
-            SignTestRun(run);
-
-            client.TestRuns.PutTestRun(run);
         }
 
         private static string GetCurrentTime()

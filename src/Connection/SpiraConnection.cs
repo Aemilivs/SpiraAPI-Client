@@ -57,7 +57,15 @@ namespace SpiraAPI.Client.Connection
             var response = _httpClient.SendAsync(request).Result;
             var content = response.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
 
-            return JsonConvert.DeserializeObject<TOutput>(content);
+            var result = Convert<TOutput>(content);
+            return result;
+        }
+
+        private TOutput Convert<TOutput>(string input)
+        {
+            var settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
+            return JsonConvert.DeserializeObject<TOutput>(input, settings);
         }
 
         private async Task<TOutput> SendAsync<TOutput>(HttpRequestMessage request)

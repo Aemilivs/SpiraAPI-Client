@@ -1,4 +1,6 @@
 ﻿using SpiraAPI.Client.Middleware;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using static System.Text.Encoding;
 using Convert = System.Convert;
 
@@ -16,9 +18,21 @@ namespace SpiraAPI.Client.Connection
 
         private string CreateToken()
         {
-            var resource = $"{_credentials.Username}:{{{_credentials.RsaToken}}}";
+            var rsaToken = FormatRsaToken(_credentials.RsaToken);
+            var resource = $"{_credentials.Username}:{rsaToken}";
             var bytes = ASCII.GetBytes(resource);
             var result = Convert.ToBase64String(bytes);
+            return result;
+        }
+
+        private string FormatRsaToken(string token)
+        {
+            if (token.StartsWith("{") ||
+                token.EndsWith("}"))
+                return token;
+
+            var result = $"{{{token}}}";
+
             return result;
         }
 
