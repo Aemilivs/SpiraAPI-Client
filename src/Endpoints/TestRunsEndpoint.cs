@@ -9,6 +9,8 @@ namespace SpiraAPI.Client.Endpoints
     {
         TestRunDTO GetTestRun(int testRunId);
         Task<TestRunDTO> GetTestRunAsync(int testRunId);
+        TestRunDTO GetAutomatedTestRun(int testRunId);
+        Task<TestRunDTO> GetAutomatedTestRunAsync(int testRunId);
         IEnumerable<TestRunDTO> CreateTestRuns(int testSetId);
         Task<IEnumerable<TestRunDTO>> CreateTestRunsAsync(int testSetId);
         TestRunDTO PutTestRun(TestRunDTO testRun);
@@ -23,6 +25,9 @@ namespace SpiraAPI.Client.Endpoints
 
         public TestRunDTO GetTestRun(int testRunId) => Get<TestRunDTO>($"{testRunId}");
         public Task<TestRunDTO> GetTestRunAsync(int testRunId) => GetAsync<TestRunDTO>($"{testRunId}");
+
+        public TestRunDTO GetAutomatedTestRun(int testRunId) => Get<TestRunDTO>($"{testRunId}/Automated");
+        public Task<TestRunDTO> GetAutomatedTestRunAsync(int testRunId) => GetAsync<TestRunDTO>($"{testRunId}/Automated");
 
         public IEnumerable<TestRunDTO> CreateTestRuns(int testSetId) => 
             Post<TestRunDTO, IEnumerable<TestRunDTO>>($"/create/test_set/{testSetId}", null);

@@ -11,7 +11,14 @@ namespace SpiraAPI.Client.Endpoints
     {
         TestCaseDTO GetTestCase(int testCaseId);
         Task<TestCaseDTO> GetTestCaseAsync(int testCaseId);
+
         IEnumerable<TestRunDTO> GetTestRuns(
+            int testCaseId,
+            int starting_row = 0,
+            int number_of_rows = int.MaxValue, 
+            int sort_field = 0,
+            string sort_direction = "desc");
+        Task<IEnumerable<TestRunDTO>> GetTestRunsAsync(
             int testCaseId,
             int starting_row = 0,
             int number_of_rows = int.MaxValue, 
@@ -27,6 +34,7 @@ namespace SpiraAPI.Client.Endpoints
 
         public TestCaseDTO GetTestCase(int testCaseId) => Get<TestCaseDTO>($"{testCaseId}");
         public Task<TestCaseDTO> GetTestCaseAsync(int testCaseId) => GetAsync<TestCaseDTO>($"{testCaseId}");
+       
         public IEnumerable<TestRunDTO> GetTestRuns(
             int testCaseId,
             int starting_row,
@@ -34,6 +42,19 @@ namespace SpiraAPI.Client.Endpoints
             int sort_field,
             string sort_direction = "desc") =>
             Post<TestRunsFilterDTO, IEnumerable<TestRunDTO>>(
+                $"{testCaseId}/test-runs/search" +
+                $"?starting_row={starting_row}" +
+                $"&number_of_rows={number_of_rows}" +
+                $"&sort_field={sort_field}" +
+                $"&sort_direction={sort_direction}",
+                new TestRunsFilterDTO());
+        public Task<IEnumerable<TestRunDTO>> GetTestRunsAsync(
+            int testCaseId,
+            int starting_row,
+            int number_of_rows, 
+            int sort_field,
+            string sort_direction = "desc") =>
+            PostAsync<TestRunsFilterDTO, IEnumerable<TestRunDTO>>(
                 $"{testCaseId}/test-runs/search" +
                 $"?starting_row={starting_row}" +
                 $"&number_of_rows={number_of_rows}" +
