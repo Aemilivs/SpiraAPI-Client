@@ -20,8 +20,8 @@ namespace SpiraAPI.Client.DTO
         public int TestCaseId { get; set; }
         public int TestRunId { get; set; }
         public int TestRunTypeId { get; set; }
-        public object TestSetId { get; set; }
-        public object TestSetTestCaseId { get; set; }
+        public int TestSetId { get; set; }
+        public int TestSetTestCaseId { get; set; }
         public int TesterId { get; set; }
         public object AutomationAttachmentId { get; set; }
         public object AutomationEngineId { get; set; }
