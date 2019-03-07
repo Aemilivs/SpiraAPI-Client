@@ -12,7 +12,7 @@ namespace SpiraAPI.Client.DTO
         public int? ActualDuration { get; set; }
         public object BuildId { get; set; }
         public string EndDate { get; set; }
-        public object EstimatedDuration { get; set; }
+        public string EstimatedDuration { get; set; }
         public ExecutionStatusIdEnum ExecutionStatusId { get; set; }
         public string Name { get; set; }
         public int? ReleaseId { get; set; }
@@ -23,17 +23,17 @@ namespace SpiraAPI.Client.DTO
         public int TestSetId { get; set; }
         public int TestSetTestCaseId { get; set; }
         public int TesterId { get; set; }
-        public object AutomationAttachmentId { get; set; }
-        public object AutomationEngineId { get; set; }
-        public object AutomationEngineToken { get; set; }
-        public object AutomationHostId { get; set; }
+        public int AutomationAttachmentId { get; set; }
+        public int AutomationEngineId { get; set; }
+        public string AutomationEngineToken { get; set; }
+        public int AutomationHostId { get; set; }
         public object Parameters { get; set; }
-        public object RunnerAssertCount { get; set; }
-        public object RunnerMessage { get; set; }
-        public object RunnerName { get; set; }
-        public object RunnerStackTrace { get; set; }
-        public object RunnerTestName { get; set; }
-        public object ScheduledDate { get; set; }
+        public int RunnerAssertCount { get; set; }
+        public string RunnerMessage { get; set; }
+        public string RunnerName { get; set; }
+        public string RunnerStackTrace { get; set; }
+        public string RunnerTestName { get; set; }
+        public string ScheduledDate { get; set; }
         public int TestRunFormatId { get; set; }
         public List<TestRunStepDTO> TestRunSteps { get; set; }
     }
