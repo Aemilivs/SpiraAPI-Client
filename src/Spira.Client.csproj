@@ -11,8 +11,11 @@
     <PackageProjectUrl>https://github.com/OKisekiO/Spira-API-Client</PackageProjectUrl>
     <RepositoryUrl>https://github.com/OKisekiO/Spira-API-Client</RepositoryUrl>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageReleaseNotes>Initial build.</PackageReleaseNotes>
+    <PackageReleaseNotes>Add Test-Sets/TetsCases endpoint</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

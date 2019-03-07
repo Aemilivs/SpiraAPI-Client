@@ -15,6 +15,9 @@ namespace SpiraAPI.Client.Client
         private ITestRunsEndpoint _testRuns;
         public ITestRunsEndpoint TestRuns => _testRuns ?? (_testRuns = new TestRunsEndpoint(_connection));
 
+        private ITestCasesEndpoint _testCases;
+        public ITestCasesEndpoint TestCases => _testCases ?? (_testCases = new TestCasesEndpoint(_connection));
+
         private ITestSetsEndpoint _testSet;
         public ITestSetsEndpoint TestSets => _testSet ?? (_testSet = new TestSetsEndpoint(_connection));
 
