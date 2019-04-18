@@ -34,9 +34,38 @@ namespace SpiraAPI.Client.Endpoints
             return Connection.PostAsync<TInput,TOutput>(endpoint, data);
         }
 
+        protected TOutput Put<TInput, TOutput>(string relativeUrl, TInput data)
+        {
+            var endpoint = GetEndpoint(relativeUrl);
+            return Connection.Put<TInput, TOutput>(endpoint, data);
+        }
+
+        protected Task<TOutput> PutAsync<TInput, TOutput>(string relativeUrl, TInput data)
+        {
+            var endpoint = GetEndpoint(relativeUrl);
+            return Connection.PutAsync<TInput,TOutput>(endpoint, data);
+        }
+
+        protected TOutput Delete<TOutput>(string relativeUrl)
+        {
+            var endpoint = GetEndpoint(relativeUrl);
+            return Connection.Delete<TOutput>(endpoint);
+        }
+
+        protected Task<TOutput> DeleteAsync<TOutput>(string relativeUrl)
+        {
+            var endpoint = GetEndpoint(relativeUrl);
+            return Connection.DeleteAsync<TOutput>(endpoint);
+        }
+
         private string GetEndpoint(string relativeUrl)
         {
-            return $"{Connection.ServiceUrl}/{EndpointUrl}/{relativeUrl}";
+            var result = $"{Connection.ServiceUrl}/{EndpointUrl}";
+
+            if (!string.IsNullOrEmpty(relativeUrl))
+                result += $"/{relativeUrl}";
+
+            return result;
         }
     }
 }

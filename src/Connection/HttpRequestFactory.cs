@@ -6,10 +6,14 @@ namespace SpiraAPI.Client.Connection
 {
     internal static class HttpRequestFactory
     {
-        public static HttpRequestMessage Get(string endpoint) =>
-            CreateRequest<object>(endpoint, HttpMethod.Get);
         public static HttpRequestMessage Post<TInput>(string endpoint, TInput data) =>
             CreateRequest(endpoint, HttpMethod.Post, data);
+        public static HttpRequestMessage Get(string endpoint) =>
+            CreateRequest<object>(endpoint, HttpMethod.Get);
+        public static HttpRequestMessage Put<TInput>(string endpoint, TInput data) =>
+            CreateRequest(endpoint, HttpMethod.Put, data);
+        public static HttpRequestMessage Delete(string endpoint) =>
+            CreateRequest<object>(endpoint, HttpMethod.Delete);
 
         private static HttpRequestMessage CreateRequest<TInput>(
             string endpoint,

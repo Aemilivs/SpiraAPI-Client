@@ -17,7 +17,7 @@ namespace SpiraAPI.Client.Connection
         {
             var handler = new HttpClientHandler();
             _httpClient = new HttpClient(handler);
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/josn"));
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public SpiraConnection(string serviceUrl, ISpiraCredentials credentials)
@@ -50,12 +50,37 @@ namespace SpiraAPI.Client.Connection
             return SendAsync<TOutput>(request);
         }
 
+        public TOutput Put<TInput, TOutput>(string endpoint, TInput data)
+        {
+            var request = HttpRequestFactory.Put(endpoint, data);
+            return Send<TOutput>(request);
+        }
+
+        public Task<TOutput> PutAsync<TInput, TOutput>(string endpoint, TInput data)
+        {
+            var request = HttpRequestFactory.Put(endpoint, data);
+            return SendAsync<TOutput>(request);
+        }
+
+        public TOutput Delete<TOutput>(string endpoint)
+        {
+            var request = HttpRequestFactory.Delete(endpoint);
+            return Send<TOutput>(request);
+        }
+
+        public Task<TOutput> DeleteAsync<TOutput>(string endpoint)
+        {
+            var request = HttpRequestFactory.Delete(endpoint);
+            return SendAsync<TOutput>(request);
+        }
+
         private TOutput Send<TOutput>(HttpRequestMessage request)
         {
             SetHeaders(request.Headers);
 
             var response = _httpClient.SendAsync(request).Result;
-            var content = response.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
+            var content = response.Content.ReadAsStringAsync().Result;
+            response.EnsureSuccessStatusCode();
 
             var result = Convert<TOutput>(content);
             return result;

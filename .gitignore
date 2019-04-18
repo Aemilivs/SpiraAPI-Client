@@ -8,3 +8,7 @@ Example/obj/
 src/bin/
 
 src/obj/
+
+Example/Program\.cs
+
+Spira\.Client\.sln\.DotSettings\.user

@@ -7,5 +7,7 @@ namespace SpiraAPI.Client.Client
         ITestRunsEndpoint TestRuns { get; }
         ITestCasesEndpoint TestCases { get; }
         ITestSetsEndpoint TestSets { get; }
+        ITestSetFolderEndpoint TestSetFolders { get; }
+        ITestCaseFolderEndpoint TestCaseFolders { get; }
     }
 }
