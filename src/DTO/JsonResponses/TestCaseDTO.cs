@@ -30,7 +30,7 @@ namespace SpiraAPI.Client.DTO
         public string OwnerName { get; set; }
         public string ProjectName { get; set; }
         public int TestCaseFolderId { get; set; }
-        public int? TestCaseId { get; set; }
+        public int TestCaseId { get; set; }
         public int TestCasePriorityId { get; set; }
         public string TestCasePriorityName { get; set; }
         public int TestCaseStatusId { get; set; }
