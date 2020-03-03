@@ -1,0 +1,26 @@
+name: .NET Core
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.108
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: Publish NuGet
+      uses: rohith/publish-nuget@v2.1.1
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: /Spira.Client.sln
+        # API key for the NuGet feed
+        NUGET_KEY: oy2d3xkor7nfclwt75oazk6x6ljcx32uzo4ohsxak3sxqe
+        # NuGet package name, required when it's different from the project name
+        PACKAGE_NAME: SpiraAPI.Client
