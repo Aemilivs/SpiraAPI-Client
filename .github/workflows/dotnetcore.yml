@@ -19,7 +19,7 @@ jobs:
       uses: rohith/publish-nuget@v2.1.1
       with:
         # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: /Spira.Client.sln
+        PROJECT_FILE_PATH: src/Spira.Client.csproj
         # API key for the NuGet feed
         NUGET_KEY: oy2d3xkor7nfclwt75oazk6x6ljcx32uzo4ohsxak3sxqe
         # NuGet package name, required when it's different from the project name
