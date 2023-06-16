@@ -14,11 +14,11 @@ jobs:
       with:
         dotnet-version: 6.x
         cache: true
-    - run: dotnet restore ./SpiraAPI-Client/src --no-dependencies
+    - run: dotnet restore ./src --no-dependencies
     - name: Build with dotnet
-      run: dotnet build ./SpiraAPI-Client/src --configuration Release
+      run: dotnet build ./src --configuration Release
     - name: Pack
-      run: dotnet pack ./SpiraAPI-Client/src --configuration Release --no-build -o ./artifacts
+      run: dotnet pack ./src --configuration Release --no-build -o ./artifacts
     - name: Publish the package to nuget.org
       run: dotnet nuget push ./artifacts/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
       env:
